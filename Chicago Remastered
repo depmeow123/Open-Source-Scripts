@@ -1,0 +1,278 @@
+-- silent aim from noss because idk how to make one https://www.youtube.com/c/Nosssa
+
+local Config = {
+    WindowName = "Chicago Remastered GUI | dep#6969",
+	Color = Color3.fromRGB(13,105,172),
+	Keybind = Enum.KeyCode.RightBracket
+}
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/AlexR32/Roblox/main/BracketV3.lua"))()
+local Window = Library:CreateWindow(Config, game:GetService("CoreGui"))
+
+local Tab1 = Window:CreateTab("Main")
+local Tab2 = Window:CreateTab("Misc")
+local Tab3 = Window:CreateTab("UI Settings")
+
+local Section1 = Tab1:CreateSection("Combat")
+local Section2 = Tab1:CreateSection("Teleports")
+local Section3 = Tab3:CreateSection("Menu")
+local Section4 = Tab3:CreateSection("Background")
+local Section5 = Tab2:CreateSection("Walkspeed")
+local Section6 = Tab2:CreateSection("ATM")
+
+local plr = game.Players.LocalPlayer
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local mouse = LocalPlayer:GetMouse()
+local Camera = workspace.CurrentCamera
+local Debris = game:GetService("Debris")
+local UserInputService = game:GetService("UserInputService")
+local target = false
+local RunService = game:GetService("RunService")
+
+local Slider1 = Section5:CreateSlider("Walkspeed", 16,200,16,true, function(Value)
+	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+end)
+
+local Button1 = Section2:CreateButton("Gun Shop 1", function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(117.160843, 4.57717896, 47.6558228, 0.0461712889, 0.0505158678, -0.997655451, -0.0256585982, 0.998451054, 0.0493686832, 0.998604, 0.0233189911, 0.0473959334)
+end)
+
+local Button1 = Section2:CreateButton("Gun Shop 2", function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-243.256363, 4.57482529, -218.524734, 0.998601079, 0.0270810816, 0.045411367, -0.0294111166, 0.998242378, 0.0514516234, -0.0439381823, -0.0527152568, 0.997642457)
+end)
+
+local Button1 = Section2:CreateButton("Bank", function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-245.552155, 6.99797821, 92.4120941, -0.999907613, 0.000698401593, 0.0135737099, -6.74044713e-08, 0.998678684, -0.0513890348, -0.0135916695, -0.0513842963, -0.998586476)
+end)
+
+local Button1 = Section2:CreateButton("Gas Station", function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(308.016632, 4.55563402, -49.881134, 0.0296246316, 0.0395916626, -0.998776615, -0.0258384123, 0.998911619, 0.0388306379, 0.999227047, 0.0246564392, 0.0306153968)
+end)
+
+local Button1 = Section2:CreateButton("Jewlery", function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(602.043762, 4.58145571, -182.776321, 0.989504933, 0.0177775137, 0.143401563, -0.0255652126, 0.99828577, 0.052648589, -0.142219797, -0.0557621345, 0.98826313)
+end)
+
+local Button1 = Section2:CreateButton("Blox-N-Out", function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(581.508728, 5.39941597, -82.2082901, -0.13871929, 0.0503143333, -0.989052713, -0.0251199435, 0.998208463, 0.054303281, 0.990013003, 0.0323778912, -0.137206882)
+end)
+
+local Button1 = Section2:CreateButton("Sewers", function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1.49241686, -8.04424953, -25.3054466, -0.0905084908, -0.0434330218, 0.994948089, -0.0259481911, 0.998812199, 0.0412412286, -0.995557487, -0.0220844429, -0.091527991)
+end)
+
+local Button1 = Section2:CreateButton("Roof", function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-69.8108978, 25.429142, -57.9848099, -0.213736445, -0.0163166523, -0.976755142, -2.27661803e-06, 0.999860585, -0.0167021211, 0.976891398, -0.00356761855, -0.213706702)
+end)
+
+
+local Toggle3 = Section3:CreateToggle("UI Toggle", nil, function(State)
+	Window:Toggle(State)
+end)
+Toggle3:CreateKeybind(tostring(Config.Keybind):gsub("Enum.KeyCode.", ""), function(Key)
+	Config.Keybind = Enum.KeyCode[Key]
+end)
+Toggle3:SetState(true)
+
+local Colorpicker3 = Section3:CreateColorpicker("UI Color", function(Color)
+	Window:ChangeColor(Color)
+end)
+Colorpicker3:UpdateColor(Config.Color)
+
+local Dropdown3 = Section4:CreateDropdown("Image", {"Default","Hearts","Hexagon","Circles","Lace With Flowers","Floral","Hitler"}, function(Name)
+	if Name == "Default" then
+		Window:SetBackground("2151741365")
+	elseif Name == "Hearts" then
+		Window:SetBackground("6073763717")
+	elseif Name == "Hexagon" then
+		Window:SetBackground("6073628839")
+	elseif Name == "Circles" then
+		Window:SetBackground("6071579801")
+	elseif Name == "Lace With Flowers" then
+		Window:SetBackground("6071575925")
+	elseif Name == "Floral" then
+		Window:SetBackground("5553946656")
+    elseif Name == "Hitler" then
+		Window:SetBackground("8930442801")
+	end
+end)
+Dropdown3:SetOption("Default")
+
+local Colorpicker4 = Section4:CreateColorpicker("Color", function(Color)
+	Window:SetBackgroundColor(Color)
+end)
+Colorpicker4:UpdateColor(Color3.new(1,1,1))
+
+local Slider3 = Section4:CreateSlider("Transparency",0,1,nil,false, function(Value)
+	Window:SetBackgroundTransparency(Value)
+end)
+Slider3:SetValue(0)
+
+local Slider4 = Section4:CreateSlider("Tile Scale",0,1,nil,false, function(Value)
+	Window:SetTileScale(Value)
+end)
+Slider4:SetValue(0.5)
+
+local TextBox1 = Section6:CreateTextBox("ATM Withdraw", "number here nigger", true, function(Value)
+	local args = {
+        [1] = "Withdraw",
+        [2] = Value
+    }
+    
+    game:GetService("ReplicatedStorage")._network.atm:InvokeServer(unpack(args))
+end)
+
+local TextBox1 = Section6:CreateTextBox("ATM Deposit", "number here nigger", true, function(Value)
+	local args = {
+        [1] = "Deposit",
+        [2] = Value
+    }
+    
+    game:GetService("ReplicatedStorage")._network.atm:InvokeServer(unpack(args))
+end)
+
+------------------------------------------------------------------------------------------------------------
+
+local Button1 = Section1:CreateButton("Silent Aim", function()
+	local sound = Instance.new("Sound", game.Workspace)
+sound.Volume = 5
+sound.SoundId = "rbxassetid://5824127929" 
+sound.Looped = false
+sound:Play()
+
+game.StarterGui:SetCore("SendNotification",  {
+ Title = "Silent Aim";
+ Text = "Z TO TOGGLE SILENT AIM";
+ Icon = "http://www.roblox.com/asset/?id=8930442801";
+ Duration = 10;
+ Callback = NotificationBindable;
+})
+
+getgenv().Prediction =  (  0  )
+
+getgenv().FOV =  (  125  )
+
+getgenv().AimKey =  (  "Z"  )
+
+local SilentAim = true
+local NeckOffSet = Vector3.new(0,-.5,0)
+local Players = game:GetService("Players")
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local Mouse = LocalPlayer:GetMouse()
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local Camera = game:GetService("Workspace").CurrentCamera
+local connections = getconnections(game:GetService("LogService").MessageOut)
+for _, v in ipairs(connections) do
+	v:Disable()
+end
+
+getgenv = getgenv
+Drawing = Drawing
+getrawmetatable = getrawmetatable
+getconnections = getconnections
+hookmetamethod = hookmetamethod
+
+local FOV_CIRCLE = Drawing.new("Circle")
+FOV_CIRCLE.Visible = true
+FOV_CIRCLE.Filled = false
+FOV_CIRCLE.Thickness = 1
+FOV_CIRCLE.Transparency = .4
+FOV_CIRCLE.Color = Color3.new(0, 1, 0)
+FOV_CIRCLE.Radius = getgenv().FOV
+FOV_CIRCLE.Position = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y / 2)
+
+local Options = {
+	Torso = "HumanoidRootPart";
+	Head = "Head";
+}
+
+local function MoveFovCircle()
+	pcall(function()
+		local DoIt = true
+		spawn(function()
+			while DoIt do task.wait()
+				FOV_CIRCLE.Position = Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y)
+			end
+		end)
+	end)
+end coroutine.wrap(MoveFovCircle)()
+
+Mouse.KeyDown:Connect(function(KeyPressed)
+	if KeyPressed == (getgenv().AimKey:lower()) then
+		if SilentAim == false then
+			FOV_CIRCLE.Color = Color3.new(0, 1, 0)
+			SilentAim = true
+		elseif SilentAim == true then
+			FOV_CIRCLE.Color = Color3.new(1, 0, 0)
+			SilentAim = false
+		end
+	end
+end)
+Mouse.KeyDown:Connect(function(Rejoin)
+	if Rejoin == "=" then
+		local LocalPlayer = game:GetService("Players").LocalPlayer
+		game:GetService("TeleportService"):Teleport(game.PlaceId, LocalPlayer)
+	end
+end)
+
+getgenv().FORCE_REPEAT = {
+  "FORIINDEXRETURNADMININGAME";
+	"AimLockPsycho";
+	"proboy32007";
+	"autofarmaccountgrind";
+}
+
+local function InRadius()
+	local Target = nil
+	local Distance = 9e9
+	local Players = game:GetService("Players")
+	local LocalPlayer = game:GetService("Players").LocalPlayer
+	local Camera = game:GetService("Workspace").CurrentCamera
+	for _, v in pairs(Players:GetPlayers()) do 
+		if not table.find(getgenv().FORCE_REPEAT, v.Name) then
+			if v ~= LocalPlayer and v.Character and v.Character:FindFirstChild("HumanoidRootPart") and v.Character:FindFirstChild("Humanoid") and v.Character:FindFirstChild("Humanoid").Health > 0 then
+				local Enemy = v.Character	
+				local CastingFrom = CFrame.new(Camera.CFrame.Position, Enemy[Options.Torso].CFrame.Position) * CFrame.new(0, 0, -4)
+				local RayCast = Ray.new(CastingFrom.Position, CastingFrom.LookVector * 9000)
+				local World, ToSpace = game:GetService("Workspace"):FindPartOnRayWithIgnoreList(RayCast, {LocalPlayer.Character:FindFirstChild("Head")})
+				local RootWorld = (Enemy[Options.Torso].CFrame.Position - ToSpace).magnitude
+				if RootWorld < 4 then		
+					local RootPartPosition, Visible = Camera:WorldToViewportPoint(Enemy[Options.Torso].Position)
+					if Visible then
+						local Real_Magnitude = (Vector2.new(Mouse.X, Mouse.Y) - Vector2.new(RootPartPosition.X, RootPartPosition.Y)).Magnitude
+						if Real_Magnitude < Distance and Real_Magnitude < FOV_CIRCLE.Radius then
+							Distance = Real_Magnitude
+							Target = Enemy
+						end
+					end
+				end
+			end
+		end
+	end
+	return Target
+end
+
+local oldIndex = nil
+oldIndex = hookmetamethod(game, "__index", function(self, Index, Screw)
+	local Screw = oldIndex(self, Index)
+	local CALC = Mouse
+	local GG = "hit"
+	local MONCLER = GG
+    if SilentAim then
+	if self == CALC and (Index:lower() == MONCLER) then	
+		local Enemy = InRadius()
+		local Camera = game:GetService("Workspace").CurrentCamera
+		if Enemy ~= nil and Enemy[Options.Head] and Enemy:FindFirstChild("Humanoid") and Enemy:FindFirstChild("Humanoid").Health > 0 then
+			local Madox = Enemy[Options.Head]
+			local Formulate = Madox.CFrame + (Madox.AssemblyLinearVelocity * getgenv().Prediction + NeckOffSet)	
+			return (Index:lower() == MONCLER and Formulate)
+		end
+		return Screw
+	end
+    end
+	return oldIndex(self, Index, Screw)
+end)
+end)
+Button1:AddToolTip("ONLY PRESS THIS ONCE OR YOU WILL LAG")
