@@ -33,9 +33,6 @@ local Slider1 = Section1:CreateSlider("JumpPower", 50,150,50,true, function(Valu
 	game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
 end)
 ------------------------------------------------------------------------------------------------------------
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new()
-
-
 local Button1 = Section2:CreateButton("Teleport To End", function()
 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(14.9367971, 7.23670387, -49998.2031, 0.999863923, 0.000606907764, 0.0164890029, 2.58876826e-05, 0.999264479, -0.0383491777, -0.0165001526, 0.0383443832, 0.999128401)
 end)
@@ -55,7 +52,7 @@ end)
 local Button1 = Section2:CreateButton("Teleport To Spawn", function()
 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(14.6146212, 7.23311043, 4.18037128, 0.999244869, -0.00148088299, -0.0388239883, -6.24475069e-06, 0.99926722, -0.03827627, 0.0388522185, 0.0382476039, 0.998512685)
 end)
-
+------------------------------------------------------------------------------------------------------------
 local Toggle3 = Section3:CreateToggle("UI Toggle", nil, function(State)
 	Window:Toggle(State)
 end)
