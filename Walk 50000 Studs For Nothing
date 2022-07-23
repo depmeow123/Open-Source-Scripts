@@ -1,0 +1,104 @@
+local Config = {
+    WindowName = "Walk 50000 Studs For Nothing GUI | dep#6969",
+	Color = Color3.fromRGB(124, 31, 230),
+	Keybind = Enum.KeyCode.RightBracket
+}
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/AlexR32/Roblox/main/BracketV3.lua"))()
+local Window = Library:CreateWindow(Config, game:GetService("CoreGui"))
+
+local Tab1 = Window:CreateTab("Main")
+local Tab2 = Window:CreateTab("UI Settings")
+
+local Section1 = Tab1:CreateSection("Main")
+local Section2 = Tab1:CreateSection("Teleports")
+local Section3 = Tab2:CreateSection("Menu")
+local Section4 = Tab2:CreateSection("Background")
+
+local plr = game.Players.LocalPlayer
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local mouse = LocalPlayer:GetMouse()
+local Camera = workspace.CurrentCamera
+local Debris = game:GetService("Debris")
+local UserInputService = game:GetService("UserInputService")
+local target = false
+local RunService = game:GetService("RunService")
+
+local Slider1 = Section1:CreateSlider("Walkspeed", 16,200,16,true, function(Value)
+	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+end)
+
+local Slider1 = Section1:CreateSlider("JumpPower", 50,150,50,true, function(Value)
+	game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+end)
+------------------------------------------------------------------------------------------------------------
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new()
+
+
+local Button1 = Section2:CreateButton("Teleport To End", function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(14.9367971, 7.23670387, -49998.2031, 0.999863923, 0.000606907764, 0.0164890029, 2.58876826e-05, 0.999264479, -0.0383491777, -0.0165001526, 0.0383443832, 0.999128401)
+end)
+
+local Button1 = Section2:CreateButton("Teleport To Snow Biome", function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(26.5287914, 7.18239212, -30024.2031, 0.388066351, 0.0721524507, 0.918802738, 3.5006291e-05, 0.996929526, -0.0783024579, -0.921631336, 0.0304187089, 0.386872411)
+end)
+
+local Button1 = Section2:CreateButton("Teleport To Sand Biome", function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(12.5400019, 7.2292037, -20015.4805, 0.999965847, 0.000349855982, 0.0082545206, 6.41202205e-05, 0.998744428, -0.0500966422, -0.0082616806, 0.0500954539, 0.998710334)
+end)
+
+local Button1 = Section2:CreateButton("Teleport To Dirt Biome", function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(14.9367971, 7.23670387, -49998.2031, 0.999863923, 0.000606907764, 0.0164890029, 2.58876826e-05, 0.999264479, -0.0383491777, -0.0165001526, 0.0383443832, 0.999128401)
+end)
+
+local Button1 = Section2:CreateButton("Teleport To Spawn", function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(14.6146212, 7.23311043, 4.18037128, 0.999244869, -0.00148088299, -0.0388239883, -6.24475069e-06, 0.99926722, -0.03827627, 0.0388522185, 0.0382476039, 0.998512685)
+end)
+
+local Toggle3 = Section3:CreateToggle("UI Toggle", nil, function(State)
+	Window:Toggle(State)
+end)
+Toggle3:CreateKeybind(tostring(Config.Keybind):gsub("Enum.KeyCode.", ""), function(Key)
+	Config.Keybind = Enum.KeyCode[Key]
+end)
+Toggle3:SetState(true)
+
+local Colorpicker3 = Section3:CreateColorpicker("UI Color", function(Color)
+	Window:ChangeColor(Color)
+end)
+Colorpicker3:UpdateColor(Config.Color)
+
+local Dropdown3 = Section4:CreateDropdown("Image", {"Default","Hearts","Hexagon","Circles","Lace With Flowers","Floral","Hitler"}, function(Name)
+	if Name == "Default" then
+		Window:SetBackground("2151741365")
+	elseif Name == "Hearts" then
+		Window:SetBackground("6073763717")
+	elseif Name == "Hexagon" then
+		Window:SetBackground("6073628839")
+	elseif Name == "Circles" then
+		Window:SetBackground("6071579801")
+	elseif Name == "Lace With Flowers" then
+		Window:SetBackground("6071575925")
+	elseif Name == "Floral" then
+		Window:SetBackground("5553946656")
+    elseif Name == "Hitler" then
+		Window:SetBackground("8930442801")
+	end
+end)
+Dropdown3:SetOption("Default")
+
+local Colorpicker4 = Section3:CreateColorpicker("Color", function(Color)
+	Window:SetBackgroundColor(Color)
+end)
+Colorpicker4:UpdateColor(Color3.new(1,1,1))
+
+local Slider3 = Section4:CreateSlider("Transparency",0,1,nil,false, function(Value)
+	Window:SetBackgroundTransparency(Value)
+end)
+Slider3:SetValue(0)
+
+local Slider4 = Section4:CreateSlider("Tile Scale",0,1,nil,false, function(Value)
+	Window:SetTileScale(Value)
+end)
+Slider4:SetValue(0.5)
