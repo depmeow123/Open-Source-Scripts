@@ -1,3 +1,5 @@
+--magnet got me this source but legend pissed me off, magnet here: magnet#0001
+
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/WetCheezit/Bracket-V2/main/src.lua"))()
 
 -- Window
