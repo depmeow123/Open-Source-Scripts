@@ -1,3 +1,5 @@
+--made by dep
+
 local Config = {
     WindowName = "Chicago Remastered GUI | dep#6969",
 	Color = Color3.fromRGB(124, 31, 230),
