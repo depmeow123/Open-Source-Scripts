@@ -1,0 +1,453 @@
+--sleezy ware src its all fucking skidded LFMAO
+
+local Finity = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/UI-Librarys/main/Finity%20UI%20Lib"))()
+local FinityWindow = Finity.new(true)
+FinityWindow.ChangeToggleKey(Enum.KeyCode.LeftControl)
+
+local AimbotCategory = FinityWindow:Category("Aimbot")
+local PlayerCategory = FinityWindow:Category("Player")
+local WaypointsCategory = FinityWindow:Category("Teleports")
+local SettingsCategory = FinityWindow:Category("Settings")
+local Credits = FinityWindow:Category("Credits")
+
+local AimbotOptions = AimbotCategory:Sector("Aimbot Options")
+local AimbotManagement = AimbotCategory:Sector("Aimbot Management")
+local MovementOptions = PlayerCategory:Sector("Movement Options")
+local PlayerOptions = PlayerCategory:Sector("Player Options")
+local SettingsOptions = SettingsCategory:Sector("Settings")
+local StatsCategory = SettingsCategory:Sector("Statistics Settings")
+local AccCategory = SettingsCategory:Sector("Account Settings")
+local FoundersCategory = Credits:Sector("Main Founders")
+local Socials = Credits:Sector("Socials")
+local MainTeleports = WaypointsCategory:Sector("Main Teleports")
+local ExtraTeleports = WaypointsCategory:Sector("Court Teleports")
+local Miscellaneous = WaypointsCategory:Sector("Miscellaneous")
+
+-- Aimbot Options
+AimbotOptions:Cheat(
+	"Checkbox", -- Type
+	"Silent Aimbot", -- Name
+	function(State) -- Callback function
+	    local Camera = workspace.CurrentCamera
+Holding = false
+function findGoals()
+   for i,v in pairs(game.workspace:GetDescendants()) do
+       if v.Name == "C__Net" then
+               local aa = "Lock"
+               v.Parent = game.Workspace
+               v.Name = aa
+           end
+       end
+   end
+local function findClosestPart(position)
+   local closestPart, closestPartMagnitude
+   local tmpMagnitude
+   for i, v in pairs(workspace:GetChildren()) do
+       if v.Name == 'Lock' then
+           if closestPart then
+               tmpMagnitude = (position - v.Position).magnitude
+               if tmpMagnitude < closestPartMagnitude then
+                   closestPart = v
+                   closestPartMagnitude = tmpMagnitude
+               end
+           else
+               closestPart = v
+               closestPartMagnitude = (position - v.Position).magnitude
+           end
+       end
+   end
+   return closestPart
+end
+findGoals()
+local UIS = game:GetService('UserInputService')
+UIS.InputBegan:connect(function(Input, GPE)
+   if not GPE and Input.KeyCode == Enum.KeyCode.Space then
+       wait(0.3)
+       local lookthat = findClosestPart(game.Players.LocalPlayer.Character.Torso.Position)
+       Holding = true
+       repeat
+           wait(0.01)
+       local argument1 = "shoot"
+       local argument2 = lookthat.Position + Vector3.new(0, 70, 0)
+       local s = nil
+local a = 70
+
+
+game.workspace[game.Players.LocalPlayer.Name].Ball.CSC:FireServer(argument1,argument2)
+       local magnitudee = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - lookthat.Position).Magnitude
+       print(magnitudee)
+       until Holding == false
+   end
+end)
+
+UIS.InputEnded:connect(function(Input, GPE)
+   if not GPE and Input.KeyCode == Enum.KeyCode.Space then
+       Holding = false
+   end
+end)
+I=0
+	end
+)
+
+AimbotOptions:Cheat(
+	"Checkbox", -- Type
+	"Range Indicator", -- Name
+	function(State) -- Callback function
+-- Torso Range Indicator
+
+local plr = game:GetService("Players").LocalPlayer
+local RunService = game:GetService("RunService")
+
+function ReturnGoal()
+    local Dist, Goal = math.huge
+    for i, v in pairs(game:GetService("Workspace").Courts:GetDescendants()) do
+        if v.Name == 'Hoop' and v:IsA("MeshPart") and v.Parent.Name == 'C__Rim' then
+            local mag = (v.Position - plr.Character.Torso.Position).Magnitude
+            if Dist > mag then
+                Dist = mag
+                Goal = v
+            end
+        end
+    end
+    return Goal
+end
+
+--print((GoalPos - plr.Character.Torso.Position.Magnitude)) <-- For Checking Mag Of The Closest Hoop To You
+
+RunService.RenderStepped:Connect(function()
+    local GoalPos = ReturnGoal().Position
+    local HumanoidRootPart = plr.Character.HumanoidRootPart
+    if ReturnGoal() ~= nil and plr.Character:FindFirstChild("Torso") then
+        if (GoalPos - plr.Character.Torso.Position).Magnitude <= 71.3 then
+            HumanoidRootPart.Color = Color3.fromRGB(0, 255, 0)
+            HumanoidRootPart.Size = Vector3.new(2.1, 2, 1.4)
+            HumanoidRootPart.Material = "Neon"
+            HumanoidRootPart.Transparency = 0
+        elseif (GoalPos - plr.Character.Torso.Position).Magnitude > 71.3 then
+            HumanoidRootPart.Transparency = 1
+            HumanoidRootPart.Size = Vector3.new(2,2,1)
+            HumanoidRootPart.Material = "Plastic"
+        end
+    end
+end)
+	end
+)
+
+AimbotOptions:Cheat("Aimbot Controls", "Your torso should glow green or whatever color you choose when u can shoot.")
+
+AimbotManagement:Cheat("Dropdown", "Indicator Shape", function(Option)
+	game.Players.LocalPlayer.Character.HumanoidRootPart.Shape = Option
+end, {
+	options = {
+		"Block",
+		"Cylinder",
+		"Ball"
+	}
+})
+
+AimbotManagement:Cheat(
+	"Checkbox", -- Type
+	"Rim Range Indicator", -- Name
+	function(State) -- Callback function
+	    -- Old Range Indicator
+
+local plr = game:GetService("Players").LocalPlayer
+local RunService = game:GetService("RunService")
+
+function ReturnGoal()
+    local Dist, Goal = math.huge
+    for i, v in pairs(game:GetService("Workspace").Courts:GetDescendants()) do
+        if v.Name == 'Hoop' and v:IsA("MeshPart") and v.Parent.Name == 'C__Rim' then
+            local mag = (v.Position - plr.Character.Torso.Position).Magnitude
+            if Dist > mag then
+                Dist = mag
+                Goal = v
+            end
+        end
+    end
+    return Goal
+end
+
+--print((GoalPos - plr.Character.Torso.Position.Magnitude)) <-- For Checking Mag Of The Closest Hoop To You
+
+RunService.RenderStepped:Connect(function()
+    local GoalPos = ReturnGoal().Position
+    if ReturnGoal() ~= nil and plr.Character:FindFirstChild("Torso") then
+        if (GoalPos - plr.Character.Torso.Position).Magnitude <= 71.5 then
+            ReturnGoal().Color = Color3.fromRGB(0, 255, 0)
+            ReturnGoal().Material = "Neon"
+        elseif (GoalPos - plr.Character.Torso.Position).Magnitude > 71.5 then
+            ReturnGoal().Color = Color3.fromRGB(170, 85, 0)
+            ReturnGoal().Material = "Plastic"
+        end
+    end
+end)
+	end
+)
+
+-- Player Options
+
+MovementOptions:Cheat("Slider", "WalkSpeed Slider", function(Value)
+	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+end, {min = 16, max = 19, suffix = "studs"})
+
+PlayerOptions:Cheat(
+	"Checkbox", -- Type
+	"Enable Autoguard", -- Name
+	function(State) -- Callback function
+	    _G.brah = false
+
+_G.keybind = "y"
+
+game.Players.LocalPlayer:GetMouse().KeyDown:connect(
+function(key)
+if key:lower() == _G.keybind and _G.brah == false then
+_G.brah = true
+for i, v in pairs(game.Players:GetPlayers()) do
+if v.Name ~= game.Players.LocalPlayer.Character.Name and (v.Character.Torso.CFrame.p - game.Players.LocalPlayer.Character.Torso.CFrame.p).Magnitude < 20 then
+while _G.brah == true do
+if v.Character.Torso.Velocity.magnitude > 0.2 then
+game.Players.LocalPlayer.Character.Humanoid:MoveTo(v.Character.Torso.CFrame.p + v.Character.Torso.Velocity.unit * 7)
+else
+game.Players.LocalPlayer.Character.Humanoid:MoveTo(v.Character.Torso.CFrame.p)
+end
+wait()
+end
+end
+end
+elseif key:lower() == _G.keybind and _G.brah == true then
+_G.brah = false
+end
+end)
+	end
+)
+
+PlayerOptions:Cheat(
+	"Checkbox", -- Type
+	"Enable Reach", -- Name
+	function(State) -- Callback function
+	    --main reach/longarm script
+function onKeyPress(inputObject, gameProcessedEvent)
+if inputObject.KeyCode == Enum.KeyCode.Z then
+local Player = game:GetService("Players").LocalPlayer
+local Character = Player.Character
+Character["Torso"].Size = Vector3.new(2,3,1)
+Character["Right Arm"].Size = Vector3.new(20,2,2)
+Character["Left Arm"].Size = Vector3.new(20,2,2)
+end
+end
+
+game:GetService("UserInputService").InputBegan:connect(onKeyPress)
+wait(0.1)
+function onKeyPress(inputObject, gameProcessedEvent)
+if inputObject.KeyCode == Enum.KeyCode.L then
+local Player = game:GetService("Players").LocalPlayer
+local Character = Player.Character
+Character["Torso"].Size = Vector3.new(2,2,1)
+Character["Right Arm"].Size = Vector3.new(1,2,1)
+Character["Left Arm"].Size = Vector3.new(1,2,1)
+end
+end
+
+game:GetService("UserInputService").InputBegan:connect(onKeyPress)
+	end
+)
+
+PlayerOptions:Cheat(
+	"Checkbox", -- Type
+	"Enable Ball Mag", -- Name
+	function(State) -- Callback function
+	    game.Players.LocalPlayer.Character.HumanoidRootPart.Size = Vector3.new(30,2,1)
+	end
+)
+
+PlayerOptions:Cheat("Aimbot Controls", "Press Z to activate, L to de-activate Reach/Mag")
+PlayerOptions:Cheat("Autoguard Controls", "Press Y to activate/de-activate Autoguard")
+
+-- Settings Options
+
+SettingsOptions:Cheat(
+	"Checkbox", -- Type
+	"Streamer Mode", -- Name
+	function(State) -- Callback function
+	    game.Players.LocalPlayer.Character.Head.PlayerNameTag.Main.PlrName.Text = "Anonymous2304"
+	end
+)
+
+SettingsOptions:Cheat(
+	"Checkbox", -- Type
+	"Invisible Mode", -- Name
+	function(State) -- Callback function
+	    game.Players.LocalPlayer.Character.Head.PlayerNameTag.Main.PlrName.Text = ""
+	end
+)
+
+SettingsOptions:Cheat("Button", "Reset Username", function()
+	game.Players.LocalPlayer.Character.Head.PlayerNameTag.Main.PlrName.Text = game.Players.LocalPlayer.Character.Name
+end)
+
+StatsCategory:Cheat(
+	"Checkbox", -- Type
+	"Flicker Record", -- Name
+	function(State) -- Callback function
+	    game.Players.LocalPlayer.Character.Head.PlayerNameTag.Main.Record.Text = "1000-0"
+	end
+)
+
+StatsCategory:Cheat(
+	"Checkbox", -- Type
+	"Flicker Streak", -- Name
+	function(State) -- Callback function
+	    game.Players.LocalPlayer.Character.Head.PlayerNameTag.StreakImage.Streak.Text = "1000"
+	end
+)
+
+StatsCategory:Cheat("Slider", "Streak Value", function(Value)
+	game.Players.LocalPlayer.Character.Head.PlayerNameTag.StreakImage.Streak.Text = Value
+end, {min = 0, max = 1000, suffix = "wins"})
+
+StatsCategory:Cheat(
+	"Checkbox", -- Type
+	"Hide Streak", -- Name
+	function(State) -- Callback function
+	    game.Players.LocalPlayer.Character.Head.PlayerNameTag.StreakImage.Streak.Text = ""
+	end
+)
+
+StatsCategory:Cheat(
+	"Checkbox", -- Type
+	"Hide Record", -- Name
+	function(State) -- Callback function
+	    game.Players.LocalPlayer.Character.Head.PlayerNameTag.Main.Record.Text = ""
+	end
+)
+
+StatsCategory:Cheat("Button", "Reset Character", function()
+	game.Players.LocalPlayer.Character.Humanoid.Health = 0
+end)
+
+-- Account SETTINGS (IMPORTAAN)
+
+-- Credits
+
+FoundersCategory:Cheat("Aimbot Controls", "Main Developer: evo#0001, urlocalterror#8826")
+FoundersCategory:Cheat("Aimbot Controls", "Main Founder: Trapz#1233")
+Socials:Cheat("Aimbot Controls", "Website: stfyra.zyrosite.com")
+Socials:Cheat("Aimbot Controls", "Discord: discord.gg/sleezyware")
+Socials:Cheat("Button", "Clipboard Discord", function()
+	setclipboard("discord.com/invite/sleezyware")
+end)
+
+-- Waypoints/Teleports
+
+MainTeleports:Cheat("Button", "Gym Entrance", function()
+	local player = game.Players.LocalPlayer.Character
+	local part = game.Workspace.Teleports.Destinations["Gym Entrance"]
+	player.HumanoidRootPart.CFrame = part.CFrame
+end)
+
+MainTeleports:Cheat("Button", "Roof Entrance", function()
+	local player = game.Players.LocalPlayer.Character
+	local part = game.Workspace.Teleports.Destinations["Roof Entrance"]
+	player.HumanoidRootPart.CFrame = part.CFrame
+end)
+
+MainTeleports:Cheat("Button", "Practice Area", function()
+	local player = game.Players.LocalPlayer.Character
+	local part = game.Workspace.Courts["Practice Court"].BackboardBarrier
+	player.HumanoidRootPart.CFrame = part.CFrame
+end)
+
+-- Court Waypoints
+
+ExtraTeleports:Cheat("Button", "Court 1", function()
+	local player = game.Players.LocalPlayer.Character
+	local part = game.Workspace.Courts["Court 1"].Queue.Base
+	player.HumanoidRootPart.CFrame = part.CFrame
+end)
+
+ExtraTeleports:Cheat("Button", "Court 2", function()
+	local player = game.Players.LocalPlayer.Character
+	local part = game.Workspace.Courts["Court 2"].Queue.Base
+	player.HumanoidRootPart.CFrame = part.CFrame
+end)
+
+ExtraTeleports:Cheat("Button", "Court 3", function()
+	local player = game.Players.LocalPlayer.Character
+	local part = game.Workspace.Courts["Court 3"].Queue.Base
+	player.HumanoidRootPart.CFrame = part.CFrame
+end)
+
+ExtraTeleports:Cheat("Button", "Court 4", function()
+	local player = game.Players.LocalPlayer.Character
+	local part = game.Workspace.Courts["Court 4"].Queue.Base
+	player.HumanoidRootPart.CFrame = part.CFrame
+end)
+
+ExtraTeleports:Cheat("Button", "Court 5", function()
+	local player = game.Players.LocalPlayer.Character
+	local part = game.Workspace.Courts["Court 5"].Queue.Base
+	player.HumanoidRootPart.CFrame = part.CFrame
+end)
+
+ExtraTeleports:Cheat("Button", "Court 6", function()
+	local player = game.Players.LocalPlayer.Character
+	local part = game.Workspace.Courts["Court 6"].Queue.Base
+	player.HumanoidRootPart.CFrame = part.CFrame
+end)
+
+ExtraTeleports:Cheat("Button", "Court 7", function()
+	local player = game.Players.LocalPlayer.Character
+	local part = game.Workspace.Courts["Court 7"].Queue.Base
+	player.HumanoidRootPart.CFrame = part.CFrame
+end)
+
+ExtraTeleports:Cheat("Button", "Court 8", function()
+	local player = game.Players.LocalPlayer.Character
+	local part = game.Workspace.Courts["Court 8"].Queue.Base
+	player.HumanoidRootPart.CFrame = part.CFrame
+end)
+
+ExtraTeleports:Cheat("Button", "Court 9", function()
+	local player = game.Players.LocalPlayer.Character
+	local part = game.Workspace.Courts["Court 9"].Queue.Base
+	player.HumanoidRootPart.CFrame = part.CFrame
+end)
+
+ExtraTeleports:Cheat("Button", "Court 10", function()
+	local player = game.Players.LocalPlayer.Character
+	local part = game.Workspace.Courts["Court 10"].Queue.Base
+	player.HumanoidRootPart.CFrame = part.CFrame
+end)
+
+ExtraTeleports:Cheat("Button", "Court 11", function()
+	local player = game.Players.LocalPlayer.Character
+	local part = game.Workspace.Courts["Court 11"].Queue.Base
+	player.HumanoidRootPart.CFrame = part.CFrame
+end)
+
+ExtraTeleports:Cheat("Button", "Court 12", function()
+	local player = game.Players.LocalPlayer.Character
+	local part = game.Workspace.Courts["Court 12"].Queue.Base
+	player.HumanoidRootPart.CFrame = part.CFrame
+end)
+
+ExtraTeleports:Cheat("Button", "Court 13", function()
+	local player = game.Players.LocalPlayer.Character
+	local part = game.Workspace.Courts["Court 13"].Queue.Base
+	player.HumanoidRootPart.CFrame = part.CFrame
+end)
+
+-- Misc
+
+Miscellaneous:Cheat("Button", "Server Hop", function()
+    game:GetService("TeleportService"):Teleport("6905769625")
+end)
+
+Miscellaneous:Cheat("Button", "Rejoin Server", function()
+	local player = game.Players.LocalPlayer -- Player
+	local gameId = game.GameId -- Current Game[s] id
+    print("Rejoining!")
+	wait(1)
+	game:GetService("TeleportService"):Teleport(gameId)
+end)
