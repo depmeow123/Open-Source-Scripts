@@ -1,0 +1,521 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/WetCheezit/Bracket-V2/main/src.lua"))()
+
+-- Window
+local Window, MainGUI = Library:CreateWindow("Legend HandlesYT | EAU | https://discord.gg/ADzr7kssSE")
+
+-- Tabs
+local Tab1 = Window:CreateTab("Tab 1")
+local Tab2 = Window:CreateTab("Tab 2")
+
+local Groupbox1 = Tab1:CreateGroupbox("Main", "Left")
+local Groupbox2 = Tab1:CreateGroupbox("Player", "Right")
+local Groupbox3 = Tab1:CreateGroupbox("Teleports", "Right")
+local Groupbox5 = Tab1:CreateGroupbox("Credits", "Left")
+
+local Groupbox4 = Tab2:CreateGroupbox("Settings", "Left")
+
+local ExampleButton = Groupbox1:CreateButton("Aimbot (X)", function()
+local Camera = workspace.CurrentCamera
+Holding = false
+function findNets()
+    for i, v in pairs(workspace:GetDescendants()) do
+        if v.Name == "courtSize" then
+            v.Parent = workspace
+        end
+    end
+end
+local function findClosestPart(position)
+    local closestPart, closestPartMagnitude
+    local tmpMagnitude
+    for i, v in pairs(workspace:GetChildren()) do
+        if v.Name == "courtSize" then
+            if closestPart then
+                tmpMagnitude = (position - v.Position).magnitude
+                if tmpMagnitude < closestPartMagnitude then
+                    closestPart = v
+                    closestPartMagnitude = tmpMagnitude
+                end
+            else
+                closestPart = v
+                closestPartMagnitude = (position - v.Position).magnitude
+            end
+        end
+    end
+    return closestPart
+end
+findNets()
+local UIS = game:GetService('UserInputService')
+UIS.InputBegan:connect(function(Input, GPE)
+    if not GPE and Input.KeyCode == Enum.KeyCode.X then
+        local lookthat = findClosestPart(game.Players.LocalPlayer.Character.Torso.Position)
+        Holding = true
+        repeat
+            wait()
+        Camera.CFrame = CFrame.new(Camera.CFrame.p, lookthat.Position + Vector3.new(0, 90, 0)) 
+        until Holding == false
+    end
+end)
+
+UIS.InputEnded:connect(function(Input, GPE)
+    if not GPE and Input.KeyCode == Enum.KeyCode.X then
+        Holding = false
+    end
+end)
+
+local CoreGui = game:GetService("StarterGui") -- Variable of StarterGui
+
+CoreGui:SetCore("SendNotification", {
+    -- Customizable
+    Title = "HOOPZ AIMBOT BY LH",
+    Text = "HOLD X TO LOCK",
+    Duration = 2, -- Set the duration to how much you want this to stay
+    -- More code in part 2
+})
+end)
+
+local ExampleButton = Groupbox1:CreateButton("Auto Guard (Z) (OP ASF)",function()
+local tr = false
+local Mouse = game.Players.LocalPlayer:GetMouse()
+
+game:GetService("UserInputService").InputBegan:Connect(function(key, gpe)
+   if key.KeyCode == Enum.KeyCode.Z and not gpe and tr == false then
+           tr = true
+           for i, v in pairs(game.Players:GetPlayers()) do
+               local char = game.Players.LocalPlayer.Character
+               if v.Name ~= char.Name and (v.Character.Torso.CFrame.p - char.Torso.CFrame.p).Magnitude < 25 then
+                   while tr == true do
+                       if v.Character.Torso.Velocity.magnitude > 0.5 and v.Character:FindFirstChild("Basketball") then
+                           char.Humanoid:MoveTo(v.Character.Torso.CFrame.p + v.Character.Torso.Velocity.unit * 7)
+                       elseif v.Character.Torso.Velocity.magnitude < 0.5 and v.Character:FindFirstChild("Basketball") then
+                           char.Humanoid:MoveTo(v.Character.Torso.CFrame.p)
+                       elseif not v.Character:FindFirstChild("Basketball") then
+                           tr = false
+                       end
+                        task.wait()
+                   end
+               end
+           end
+       elseif key.KeyCode == Enum.KeyCode.Z and not gpe and tr == true then
+           tr = false
+       end
+   end
+)
+end)
+
+local ExampleButton = Groupbox4:CreateButton("Remove GUI",function()
+game.CoreGui["Legend HandlesYT | RoofTop | https://discord.gg/ADzr7kssSE"]:Destroy()
+end)
+
+local ExampleButton = Groupbox5:CreateButton("https://discord.gg/ADzr7kssSE",function()
+    local CoreGui = game:GetService("StarterGui") -- Variable of StarterGui
+	CoreGui:SetCore("SendNotification", {
+		-- Customizable
+		Title = "Paste To Google",
+		Text = "Copied To Clipboard",
+		Duration = 7, -- Set the duration to how much you want this to stay
+		-- More code in part 2
+	})
+    setclipboard("https://discord.gg/ADzr7kssSE")
+	toclipboard("https://discord.gg/ADzr7kssSE")
+end)
+
+local ExampleButton = Groupbox5:CreateButton("Legend HandlesYT#9518",function()
+    local CoreGui = game:GetService("StarterGui") -- Variable of StarterGui
+	CoreGui:SetCore("SendNotification", {
+		-- Customizable
+		Title = "Paste To Discord",
+		Text = "Copied To Clipboard",
+		Duration = 7, -- Set the duration to how much you want this to stay
+		-- More code in part 2
+	})
+    setclipboard("Legend HandlesYT#9518")
+	toclipboard("Legend HandlesYT#9518")
+end)
+
+local ExampleButton = Groupbox5:CreateButton("v1.2",function()
+end)
+
+
+local ExampleButton = Groupbox1:CreateButton("Auto Get Open (R)",function()
+local mouse = game.Players.LocalPlayer:GetMouse()
+    local parted = false
+
+
+    local part = Instance.new("Part",game.Lighting)
+    part.Anchored = true
+    part.Size = Vector3.new(700,1,700)
+    part.Transparency = 0.9
+    part.TopSurface = "Smooth"
+
+    mouse.KeyDown:connect(function(key)
+        if key == "r" then
+            game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(game.Players.LocalPlayer.Character:GetPrimaryPartCFrame()*CFrame.new(0, 0, -60))
+        end
+    end)
+    
+    local mouse = game.Players.LocalPlayer:GetMouse()
+		local parted = false
+	
+	
+		local part = Instance.new("Part",game.Lighting)
+		part.Anchored = true
+		part.Size = Vector3.new(700,1,700)
+		part.Transparency = 0.9
+		part.TopSurface = "Smooth"
+	
+	
+	
+	
+		mouse.KeyDown:connect(function(key)
+			if key == "r" then
+				game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(game.Players.LocalPlayer.Character:GetPrimaryPartCFrame()*CFrame.new(0, 20,0))
+			end
+		end)
+end)
+
+local ExampleSlider = Groupbox1:CreateSlider("Hitbox Range (OP)", 0, 20, 0, function(value)
+   local Player = game:GetService("Players").LocalPlayer
+            local Character = Player.Character
+              Character["Right Arm"].Size = Vector3.new(value,2,1)
+            Character["Left Arm"].Size = Vector3.new(value,2,1)
+            Character["Right Leg"].Size = Vector3.new(value,2,1)
+            Character["Left Leg"].Size = Vector3.new(value,2,1)
+end)
+
+local ExampleButton = Groupbox1:CreateButton("Auto Steal Ball (OP)",function()
+local Player = game:GetService("Players").LocalPlayer
+local Ball = nil
+local toggle = false
+local TPPos = nil
+local SelectingTPPos = false
+
+local Gui = Instance.new("ScreenGui", Player.PlayerGui)
+local mainFrame = Instance.new("Frame", Gui)
+mainFrame.Size = UDim2.new(0, 400, 0, 75)
+mainFrame.Position = UDim2.new(0.5, -mainFrame.Size.X.Offset / 2, 0, 0)
+mainFrame.BackgroundTransparency = 0.5
+local btnToggle = Instance.new("TextButton", mainFrame)
+btnToggle.Size = UDim2.new(0.5, 0, 1, 0)
+btnToggle.BackgroundTransparency = 0.5
+btnToggle.TextScaled = true
+btnToggle.Text = "Toggle On"
+btnToggle.BackgroundColor3 = Color3.new(1, 0, 0)
+local SelectTeleportLoc = Instance.new("TextButton", mainFrame)
+SelectTeleportLoc.Size = UDim2.new(0.5, 0, 0.33, 0)
+SelectTeleportLoc.Position = UDim2.new(0.5, 0, 0, 0)
+SelectTeleportLoc.BackgroundTransparency = 0.5
+SelectTeleportLoc.TextScaled = true
+SelectTeleportLoc.TextWrapped = true
+SelectTeleportLoc.Text = "Click on Player To Select"
+local btnTeleportLoc = Instance.new("TextButton", mainFrame)
+btnTeleportLoc.Size = UDim2.new(0.5, 0, 0.64, 0)
+btnTeleportLoc.Position = UDim2.new(0.5, 0, 0.34, 0)
+btnTeleportLoc.BackgroundTransparency = 0.5
+btnTeleportLoc.TextScaled = true
+btnTeleportLoc.TextWrapped = true
+btnTeleportLoc.Text = "Teleport to Player"
+
+function NotifyMsg(msg)
+local lblNotify = Instance.new("TextLabel", mainFrame)
+lblNotify.Size = UDim2.new(1, 0, 0, 50)
+lblNotify.Position = UDim2.new(0, 0, 1, 0)
+lblNotify.TextScaled = true
+lblNotify.Text = msg
+
+game:GetService("Debris"):AddItem(lblNotify, math.pi / 2)
+end
+
+function ToggleF()
+if not toggle then
+toggle = true
+btnToggle.Text = "Toggle Off"
+btnToggle.BackgroundColor3 = Color3.new(0, 1, 0)
+else
+toggle = false
+btnToggle.Text = "Toggle On"
+btnToggle.BackgroundColor3 = Color3.new(1, 0, 0)
+end
+end
+
+btnTeleportLoc.MouseButton1Click:connect(function()
+if TPPos ~= nil then
+Player.Character:MoveTo(TPPos.Position)
+else
+NotifyMsg("Please select a valid part to TP to")
+end
+end)
+
+SelectTeleportLoc.MouseButton1Click:connect(function()
+if not SelectingTPPos then
+SelectingTPPos = true
+NotifyMsg("Select a part...")
+game:GetService("UserInputService").InputBegan:connect(function(input)
+if input.UserInputType == Enum.UserInputType.MouseButton1 and SelectingTPPos then
+TPPos = Player:GetMouse().Target
+SelectingTPPos = false
+NotifyMsg("Successfully updated TP Pos. Press [P]")
+return
+end
+end)
+end
+end)
+
+btnToggle.MouseButton1Click:connect(function()
+ToggleF()
+end)
+
+game:GetService("UserInputService").InputBegan:connect(function(input)
+if input.KeyCode == Enum.KeyCode.LeftControl then
+ToggleF()
+elseif input.KeyCode == Enum.KeyCode.P then
+if TPPos ~= nil then
+Player.Character:MoveTo(TPPos.Position)
+else
+NotifyMsg("Please select a valid part to TP to")
+end
+end
+end)
+print"Press 'Left Control' to toggle BallTP. You can also just click the button at the top."
+
+function FindAndReturnToolWorkspace(name, parent)
+for _,v in pairs(parent:GetChildren() and game.Players:GetPlayers()) do
+if not v:IsA("Player") and v.Name == name then
+return v
+elseif v:IsA("Player") then
+if v.Character:FindFirstChild(name) then
+return v.Character[name]
+end
+end
+end
+end
+
+function Getball(name)
+print("Finding ball...")
+repeat wait() until FindAndReturnToolWorkspace("Basketball", game.Workspace) ~= nil
+Ball = FindAndReturnToolWorkspace(name, game.Workspace)
+end
+Getball("Basketball")
+
+while Player and game:GetService("RunService").RenderStepped:wait() do
+if toggle and Player.Character:FindFirstChild("Basketball") == nil then
+if Ball == nil then
+Getball("Basketball")
+Player.Character:MoveTo(Ball.Handle.Position)
+else
+if Ball and Ball:FindFirstChild("Handle") and Ball.Parent and Ball.Parent:IsA("Model" or "Workspace" or "Player") then
+Player.Character:MoveTo(Ball.Handle.Position)
+else
+Getball("Basketball")
+end
+end
+end
+end
+
+game.Players.PlayerRemoving:connect(function(PlrRemoving)
+if PlrRemoving.Character:FindFirstChild("Basketball") then
+Ball = nil
+end
+end)
+end)
+
+local ExampleButton = Groupbox3:CreateButton("2v2 Area 1",function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-243.793915, 8.43597984, 230.410904, 0.0261254646, -1.95311038e-08, 0.999658644, 7.57083498e-08, 1, 1.75591808e-08, -0.999658644, 7.52237668e-08, 0.0261254646)
+end)
+
+local ExampleButton = Groupbox3:CreateButton("2v2 Area 2 ",function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-246.525375, 8.43597794, -358.05307, 0.0392517038, 2.5467946e-08, 0.999229372, 1.00417353e-07, 1, -2.94321811e-08, -0.999229372, 1.01495232e-07, 0.0392517038)
+end)
+
+local ExampleButton = Groupbox3:CreateButton("3v3 Area 1",function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-249.19519, 8.43597794, -62.4676666, 0.0784510672, 4.37645333e-08, 0.996917963, 6.44106901e-09, 1, -4.44067041e-08, -0.996917963, 9.90497107e-09, 0.0784510672)
+end)
+
+local ExampleButton = Groupbox3:CreateButton("3v3 Area 2",function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(41.0513458, 3.01999807, -266.369446, -0.00655602012, -3.40560788e-08, 0.999978483, 3.52671101e-08, 1, 3.42880284e-08, -0.999978483, 3.54911478e-08, -0.00655602012)
+end)
+
+local ExampleButton = Groupbox3:CreateButton("3v3 Area 3",function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(40.0407104, 3.01999807, 137.311432, 0.0653913841, 3.19970894e-08, 0.997859716, 5.51999157e-09, 1, -3.24274545e-08, -0.997859716, 7.62865326e-09, 0.0653913841)
+end)
+
+
+local ExampleButton = Groupbox2:CreateButton("Tall (K On, L Off)",function()
+    
+    function onKeyPress(inputObject, gameProcessedEvent)
+		if inputObject.KeyCode == Enum.KeyCode.K then
+			local Player = game:GetService("Players").LocalPlayer
+			local Character = Player.Character
+			Character["Torso"].Size = Vector3.new(2,4,2)
+			Character["Right Arm"].Size = Vector3.new(1,20,1)
+			Character["Left Arm"].Size = Vector3.new(1,20,1)
+			Character["Right Leg"].Size = Vector3.new(1,20,1)
+			Character["Left Leg"].Size = Vector3.new(1,20,1)
+		end
+	end
+	
+	game:GetService("UserInputService").InputBegan:connect(onKeyPress)
+	function onKeyPress(inputObject, gameProcessedEvent)
+		if inputObject.KeyCode == Enum.KeyCode.L then
+			local Player = game:GetService("Players").LocalPlayer
+			local Character = Player.Character
+			Character["Torso"].Size = Vector3.new(2,2,1)
+			Character["Right Arm"].Size = Vector3.new(1,2,1)
+			Character["Left Arm"].Size = Vector3.new(1,2,1)
+			Character["Right Leg"].Size = Vector3.new(1,2,1)
+			Character["Left Leg"].Size = Vector3.new(1,2,1)
+		end
+	end
+	game:GetService("UserInputService").InputBegan:connect(onKeyPress)
+local CoreGui = game:GetService("StarterGui") -- Variable of StarterGui
+
+CoreGui:SetCore("SendNotification", {
+    -- Customizable
+    Title = "M To Turn On",
+    Text = "N To Turn Off",
+    Duration = 2, -- Set the duration to how much you want this to stay
+    -- More code in part 2
+})
+end)
+
+local ExampleToggle1 = Groupbox2:CreateToggle("Silent Speed", function(state)
+   local Humanoid = game:GetService("Players").LocalPlayer.Character.Humanoid;
+				Humanoid:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
+				Humanoid.WalkSpeed = 19
+				end)
+				Humanoid.WalkSpeed = 19
+end)
+
+local ExampleSlider = Groupbox2:CreateSlider("HipHeight", 0, 20, 0, function(value)
+   Float_Height = (value) -- Your float height | 5 is default
+
+local i=1
+G=game;
+_=wait;
+p=G:GetService("Players").LocalPlayer.Character
+p:FindFirstChild("Humanoid").HipHeight = Float_Height
+for i=1,i do
+repeat p:FindFirstChild("Humanoid").HipHeight=Float_Height-n _(t)p:FindFirstChild("Humanoid").HipHeight=Float_Height+n _(t) until
+p:FindFirstChild("Humanoid").Health == 0
+end
+end)
+
+
+local ExampleButton2 = Groupbox2:CreateButton("V To Speed", function()
+    VHeld = false
+		local gcheck = true
+		urspeed = -0.3 -- The lower it is the faster. So don't worry about it being minus 1
+	
+	
+		function ChangeFaster(inputObject, gameProcessedEvent)
+			if inputObject.KeyCode == Enum.KeyCode.Minus and gameProcessedEvent == false then        
+				urspeed = urspeed - 0.1
+			end
+		end
+	
+	
+	
+		function ChangeSlower(inputObject, gameProcessedEvent)
+			if inputObject.KeyCode == Enum.KeyCode.Equals and gameProcessedEvent == false then        
+				urspeed = urspeed + 0.1
+			end
+		end
+	
+	
+	
+		function GChecker(inputObject, gameProcessedEvent)
+			if inputObject.KeyCode == Enum.KeyCode.K and gameProcessedEvent == false then        
+				if gcheck == false then
+					gcheck = true
+				elseif gcheck == true then
+					gcheck = false
+				end
+	
+			end
+		end
+	
+		game:GetService("UserInputService").InputBegan:connect(GChecker)
+	
+	
+	
+		function PressV(inputObject,gameProcessedEvent)
+			if inputObject.KeyCode == Enum.KeyCode.V and gameProcessedEvent == false and gcheck == true then
+				VHeld = true
+			end
+		end
+	
+		function ReleaseV(inputObject,gameProcessed)
+			if inputObject.KeyCode == Enum.KeyCode.V then
+				VHeld = false
+			end
+		end
+	
+		game:GetService("UserInputService").InputBegan:connect(PressV)
+		game:GetService("UserInputService").InputEnded:connect(ReleaseV)
+		game:GetService("UserInputService").InputBegan:connect(ChangeFaster)
+		game:GetService("UserInputService").InputBegan:connect(ChangeSlower)
+	
+	
+		game:GetService('RunService').Stepped:connect(function()
+			if VHeld == true then
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,urspeed)
+			end
+		end)VHeld = false
+		local gcheck = true
+		urspeed = -0.3 -- The lower it is the faster. So don't worry about it being minus 1
+	
+	
+		function ChangeFaster(inputObject, gameProcessedEvent)
+			if inputObject.KeyCode == Enum.KeyCode.Minus and gameProcessedEvent == false then        
+				urspeed = urspeed - 0.1
+			end
+		end
+	
+	
+	
+		function ChangeSlower(inputObject, gameProcessedEvent)
+			if inputObject.KeyCode == Enum.KeyCode.Equals and gameProcessedEvent == false then        
+				urspeed = urspeed + 0.1
+			end
+		end
+	
+	
+	
+		function GChecker(inputObject, gameProcessedEvent)
+			if inputObject.KeyCode == Enum.KeyCode.K and gameProcessedEvent == false then        
+				if gcheck == false then
+					gcheck = true
+				elseif gcheck == true then
+					gcheck = false
+				end
+	
+			end
+		end
+	
+		game:GetService("UserInputService").InputBegan:connect(GChecker)
+	
+	
+	
+		function PressV(inputObject,gameProcessedEvent)
+			if inputObject.KeyCode == Enum.KeyCode.V and gameProcessedEvent == false and gcheck == true then
+				VHeld = true
+			end
+		end
+	
+		function ReleaseV(inputObject,gameProcessed)
+			if inputObject.KeyCode == Enum.KeyCode.V then
+				VHeld = false
+			end
+		end
+	
+		game:GetService("UserInputService").InputBegan:connect(PressV)
+		game:GetService("UserInputService").InputEnded:connect(ReleaseV)
+		game:GetService("UserInputService").InputBegan:connect(ChangeFaster)
+		game:GetService("UserInputService").InputBegan:connect(ChangeSlower)
+	
+	
+		game:GetService('RunService').Stepped:connect(function()
+			if VHeld == true then
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,urspeed)
+			end
+		end)("Pressed")
+end)
