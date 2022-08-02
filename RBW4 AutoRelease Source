@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("JaysHub > RBW4", "DarkTheme")
+local Window = Library.CreateLib("khyhub better lmfao", "DarkTheme")
 
 -- Main
 local Main = Window:NewTab("Main")
