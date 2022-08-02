@@ -29,6 +29,6 @@ MainSection:NewToggle("Auto Release", "Automatically Releases For You", function
     end
 end)
 
-MainSection:NewSlider("Release Delay", "The delay for the auto release", 50, 5, function(s) -- 500 (MaxValue) | 0 (MinValue)
+MainSection:NewSlider("Release Delay", "The delay for the auto release", 100, 5, function(s) -- 500 (MaxValue) | 0 (MinValue)
     getgenv().AutoReleaseTiming = s
 end)
