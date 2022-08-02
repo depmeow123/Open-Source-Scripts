@@ -1,0 +1,96 @@
+if game.PlaceId == 286090429 then
+    local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "JaysHub Arsenal", HidePremium = true, IntroEnabed = false, IntroText = "JaysHub Arsenal", SaveConfig = true, ConfigFolder = "JayConfig"})
+		
+
+
+--Tabs
+local MainTab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+MainTab:AddToggle({
+	Name = "Aimbot",
+	Default = false,
+	Callback = function(Value)
+		loadstring(game:HttpGet(('https://pastebin.com/raw/ukRK3rNe%27),true))()
+	end    
+})
+MainTab:AddToggle({
+	Name = "Silent Aim",
+	Default = false,
+	Callback = function(Value)
+		print(Value)
+	end    
+})
+
+MainTab:AddToggle({
+	Name = "TriggerBot",
+	Default = false,
+	Callback = function(Value)
+		print(Value)
+	end    
+})
+MainTab:AddToggle({
+	Name = "Esp",
+	Default = false,
+	Callback = function(Value)
+		print(Value)
+	end    
+})
+local MiscTab = Window:MakeTab({
+	Name = "Misc",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+MiscTab:AddToggle({
+	Name = "NoClip",
+	Default = false,
+	Callback = function(Value)
+		print(Value)
+	end    
+})
+MiscTab:AddToggle({
+	Name = "God Mode",
+	Default = false,
+	Callback = function(Value)
+		print(Value)
+	end    
+})
+MiscTab:AddToggle({
+	Name = "Speed",
+	Default = false,
+	Callback = function(Value)
+		print(Value)
+	end    
+})
+local GunsTab = Window:MakeTab({
+	Name = "Gun Mods",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+GunsTab:AddToggle({
+	Name = "No Recoil",
+	Default = false,
+	Callback = function(Value)
+		print(Value)
+	end
+})    
+    GunsTab:AddToggle({
+        Name = "No Spread",
+        Default = false,
+        Callback = function(Value)
+            print(Value)
+        end    
+    })
+    GunsTab:AddToggle({
+        Name = "Inf Ammo",
+        Default = false,
+        Callback = function(Value)
+            print(Value)
+        end    
+    })
+
+end
+OrionLib:Init()
