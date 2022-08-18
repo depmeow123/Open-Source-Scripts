@@ -1,5 +1,5 @@
 local lib = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/Vape.txt")()
-local win = lib:Window("soul hub skidded this lmao",Color3.fromRGB(107, 50, 124), Enum.KeyCode.RightControl)
+local win = lib:Window("soul hub skidded this lmao, khyhub better",Color3.fromRGB(107, 50, 124), Enum.KeyCode.RightControl)
 local tab = win:Tab("Main")
 local tab2 = win:Tab("UI Settings")
 
