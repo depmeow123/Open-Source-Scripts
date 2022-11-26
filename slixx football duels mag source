@@ -1,0 +1,29 @@
+function ball()
+  local dist,ball = math.huge
+  for i,v in pairs(game:GetService("Workspace")["Balls_Kicks"]:GetChildren()) do
+      if v.Name == "Football" then
+          local magnitude = (v.Position -game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position).Magnitude
+          if magnitude < dist then
+              dist = magnitude
+              ball = v
+                end
+            end
+        end
+    return ball
+end
+
+local uis = game:GetService("UserInputService")
+
+uis.InputBegan:Connect(function(key,gp)
+    if gp then return end
+    
+    if key.UserInputType == Enum.UserInputType.MouseButton1 then
+        local ball = ball()
+        for i = 1,60 do wait()
+            if (ball.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 20 then
+            ball.CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position)
+            ball.CanCollide = false
+            end
+        end
+    end
+end)
