@@ -1,3 +1,5 @@
+-- no longer works
+
 game:GetService("NetworkClient"):SetOutgoingKBPSLimit(math.huge)
 
 while task.wait() do
