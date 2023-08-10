@@ -1,0 +1,27 @@
+local ReplicatedStorage = game.ReplicatedStorage
+local LocalPlayer = game.Players.LocalPlayer
+
+local Position = LocalPlayer.PlayerGui.CharacterCustomization.Vitals.Position_.PositionName.Text
+local Height = LocalPlayer.PlayerGui.CharacterCustomization.Vitals.Height.HeightName.Text
+local Weight = LocalPlayer.PlayerGui.CharacterCustomization.Vitals.Weight.WeightName.Text
+
+ReplicatedStorage["CC.Remote"]:FireServer("Position Change Request", "Shooting Guard")
+ReplicatedStorage["CC.Remote"]:FireServer("Height Change Request", "Shooting Guard", "6'6''")
+
+for i = 1, 700 do
+    ReplicatedStorage["CC.Remote"]:FireServer("Apply Adjustments Change Request")
+end
+
+ReplicatedStorage["CC.Remote"]:FireServer("Height Change Request", "Shooting Guard", "6'3''")
+
+for i = 1, 400 do
+    ReplicatedStorage["CC.Remote"]:FireServer("Apply Adjustments Change Request")
+end
+
+ReplicatedStorage["CC.Remote"]:FireServer("Weight Change Request", "Shooting Guard", "180 lbs")
+
+repeat task.wait() until LocalPlayer.PlayerGui.CharacterCustomization.Attributes.OverallCircle.OVR.Text == "99"
+
+ReplicatedStorage["CC.Remote"]:FireServer("Position Change Request", Position)
+ReplicatedStorage["CC.Remote"]:FireServer("Height Change Request", Position, Height)
+ReplicatedStorage["CC.Remote"]:FireServer("Weight Change Request", Position, Weight)
