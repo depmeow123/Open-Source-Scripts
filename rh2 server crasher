@@ -1,3 +1,5 @@
+game:GetService("NetworkClient"):SetOutgoingKBPSLimit(math.huge)
+
 while task.wait() do
     for i = 1,100 do
         task.spawn(function()
