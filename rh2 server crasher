@@ -1,0 +1,7 @@
+while task.wait() do
+    for i = 1,100 do
+        task.spawn(function()
+            game:GetService("ReplicatedStorage").DataModules:FindFirstChild("data.Module"):FindFirstChild("Data.RF"):InvokeServer("getData", game:GetService("Players").LocalPlayer.UserId)
+        end)
+    end
+end
